@@ -7,8 +7,12 @@ void setup()
 }
 void draw()
 {
-	Die ok = new Die(50,150);
-	ok.show();
+	for(int y = 5; y<=300; y=y+60){
+		for (int x = 50; x < 500; x = x + 60){
+    		Die ok = new Die(x, y);
+    		ok.show();
+    	}
+    }
 }
 void mousePressed()
 {
@@ -17,17 +21,15 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	//variable declarations here
-	int roll = 0, myX, myY;
+	int roll, myX, myY;
 	Die(int x, int y) //constructor
 	{
-		//variable initializations here
-		rect(x, y, width, height);
+		roll = 1;//variable initializations here
 		myX = x;
 		myY = y;
 	}
 	void roll()
 	{
-		int roll = 0;
 		if((int)(Math.random()*6)+1 == 1){
 			roll = 1;
 		}else if((int)(Math.random()*6)+1 == 2){
@@ -47,7 +49,21 @@ class Die //models one single dice cube
 	void show()
 	{
 		//your code here
+		fill(100);
 		noStroke();
-		fill(255);
+		rect(myX-35,myY,50,50,20);
+		if(roll==1){
+			text("1", myX, myY+30);
+		}else if(roll==2){
+			text("2", myX, myY+30);
+		}else if(roll==3){
+			text("3", myX, myY+30);
+		}else if(roll==4){
+			text("4", myX, myY+30);
+		}else if(roll==5){
+			text("5", myX, myY+30);
+		}else if(roll==6){
+			text("6", myX, myY+30);
+		}
 	}
 }
