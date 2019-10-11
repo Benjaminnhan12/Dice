@@ -7,14 +7,21 @@ void setup()
 }
 void draw()
 {
+	background(220);
+	int sum = 0;
 	for(int y = 5; y<=300; y=y+60){
 		for (int x = 50; x < 500; x = x + 60){
     		Die ok = new Die(x, y);
-    		//count += rolls;
     		ok.roll();
     		ok.show();
+    		sum += ok.rolls;
+
     	}
     }
+    fill(0);
+    textAlign(CENTER,CENTER);
+    textSize(20);
+    text("The total is " + sum, width/2, 176);
 }
 void mousePressed()
 {
@@ -23,13 +30,12 @@ void mousePressed()
 class Die //models one single dice cube
 {
 	//variable declarations here
-	int rolls, myX, myY, count;
+	int rolls, myX, myY;
 	Die(int x, int y) //constructor
 	{
 		rolls = 1;//variable initializations here
 		myX = x;
 		myY = y;
-		count = 0;
 	}
 	void roll()
 	{
@@ -39,7 +45,7 @@ class Die //models one single dice cube
 	void show()
 	{
 		//your code here
-		fill(100);
+		fill((int)(Math.random()*255),(int)(Math.random()*255), (int)(Math.random()*255));
 		noStroke();
 		rect(myX-35,myY,50,50,20);
 		fill(170);
@@ -72,7 +78,6 @@ class Die //models one single dice cube
 			ellipse(myX-2, myY+25, 5, 5);
 			ellipse(myX-18, myY+25, 5, 5);
 		}
-		//text(count, 200, 200);
 		// fill(255);
 		// stroke(255);
 		// text(rolls, myX, myY+30);
